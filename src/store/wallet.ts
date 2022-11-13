@@ -50,5 +50,6 @@ export default defineStore("wallet", () => {
     }),
     tokens,
     createWallet,
+    isLoggedIn: computed(() => !!address.value),
   };
 });

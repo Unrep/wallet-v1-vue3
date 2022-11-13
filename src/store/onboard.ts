@@ -50,7 +50,9 @@ export default defineStore("onboard", () => {
       );
     }
     const wallet = onboard!.state.get().wallets[0];
+
     if (!wallet) {
+      localStorage.removeItem("logged_wallet_name");
       return;
     }
 

@@ -14,20 +14,8 @@
 
           <div class="account-data-row">
             <div class="row-name">Balances</div>
-            <div
-              class="balances-list flex flex-col rounded-md border border-gray-200 md:col-span-2"
-              v-for="(item, key) in balances"
-              :key="key"
-            >
-              <div class="balance-row grid grid-cols-3 px-3 py-2 align-middle">
-                <div class="row-name">{{ key }}</div>
-                <div class="row-info col-span-2">{{ item }}</div>
-              </div>
-              <div class="balance-row grid grid-cols-3 px-3 py-2 align-middle">
-                <div class="row-name">{{ key }}</div>
-                <div class="row-info col-span-2">{{ item }}</div>
-              </div>
-              <div class="balance-row grid grid-cols-3 px-3 py-2 align-middle">
+            <div class="balances-list" v-for="(item, key) in balances" :key="key">
+              <div class="balance-row">
                 <div class="row-name">{{ key }}</div>
                 <div class="row-info col-span-2">{{ item }}</div>
               </div>
@@ -68,6 +56,7 @@ const { balances, address } = storeToRefs(useWallet());
     }
 
     .balances-list {
+      @apply flex flex-col rounded-md border border-gray-200 md:col-span-2;
       .row-name {
         @apply text-gray-500;
       }
@@ -75,8 +64,13 @@ const { balances, address } = storeToRefs(useWallet());
       .row-info {
         @apply text-gray-900;
       }
-      .balance-row:not(:last-child) {
-        @apply border-b;
+
+      .balance-row {
+        @apply grid grid-cols-3 px-3 py-2 align-middle;
+
+        &:not(:last-child) {
+          @apply border-b;
+        }
       }
     }
   }
