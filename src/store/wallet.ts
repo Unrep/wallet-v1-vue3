@@ -19,7 +19,7 @@ export default defineStore("wallet", () => {
     const signer = ethersProvider.getSigner();
 
     syncProvider = await getDefaultRestProvider(selectedNetwork.value.name);
-    syncWallet = await Wallet.fromEthSigner(signer, syncProvider);
+    syncWallet = await Wallet.fromEthSignerNoKeys(signer, syncProvider);
     address.value = syncWallet.address();
 
     requestTokens();

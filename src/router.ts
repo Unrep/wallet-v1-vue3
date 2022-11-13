@@ -4,6 +4,7 @@ import AccountIndex from "@/views/account/Index.vue";
 import AccountTransfer from "@/views/account/Transfer.vue";
 import { PaperAirplaneIcon, UserIcon } from "@heroicons/vue/outline";
 import useWallet from "./store/wallet";
+import useOnboard from "@/store/onboard";
 
 const defaultRoutes = [
   {
@@ -54,9 +55,14 @@ function replaceMeta(type: "name" | "property", key: string, value: unknown, fal
 }
 
 router.beforeEach((to, from, next) => {
+  const { login } = useOnboard();
   const { address } = useWallet();
+  const logged_wallet = localStorage.getItem("logged_wallet_name");
+  console.log(logged_wallet);
 
-  console.log("to", to);
+  if (logged_wallet) {
+    login(logged_wallet);
+  }
 
   if (!address && to.meta.requireLogin === true) {
     next({ name: "home" });
