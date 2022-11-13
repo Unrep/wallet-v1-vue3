@@ -24,7 +24,7 @@
   }
 
   .card-header {
-    @apply rounded-t-lg pt-4;
+    @apply rounded-t-lg border-b py-4;
 
     .card-section-headline {
       @apply text-base font-semibold sm:text-lg;
@@ -37,9 +37,10 @@
     @apply rounded-b-lg py-3;
   }
   .card-header,
-  .card-body,
   .card-footer {
     @apply px-4 sm:px-6;
   }
+
+
 }
 </style>
