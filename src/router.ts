@@ -59,7 +59,6 @@ router.beforeEach(async (to, from, next) => {
   const { isLoggedIn } = storeToRefs(useWallet());
   const { login } = useOnboard();
   const logged_wallet = localStorage.getItem("logged_wallet_name");
-  console.log(logged_wallet);
 
   if (!isLoggedIn.value && logged_wallet) {
     await login(logged_wallet);

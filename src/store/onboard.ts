@@ -38,8 +38,6 @@ export default defineStore("onboard", () => {
   let ethersProvider = undefined;
 
   async function login(walletName?: string) {
-    // console.log("logged_wallet_name", localStorage.getItem("logged_wallet_name"));
-
     if (!onboard.state.get().wallets.length) {
       await onboard!.connectWallet(
         walletName
@@ -57,9 +55,6 @@ export default defineStore("onboard", () => {
     }
 
     localStorage.setItem("logged_wallet_name", wallet.label);
-
-    // console.log("Logged in with", wallet);
-    // console.log("Account", wallet.accounts[0]);
 
     ethersProvider = new ethers.providers.Web3Provider(wallet.provider, "any");
 
